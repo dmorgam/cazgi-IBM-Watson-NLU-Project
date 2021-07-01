@@ -130,3 +130,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Generated js and node modules
+sentimentAnalyzeServer/client/*
+sentimentAnalyzeServer/node_modules
+sentimentAnalyzeClient/node_modules
+sentimentAnalyzeClient/.eslintcache
