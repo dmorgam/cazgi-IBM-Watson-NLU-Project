@@ -73,10 +73,11 @@ app.get("/url/sentiment", (req,res) => {
       languaje: 'en'
     })
     .then(analysisResults => {
-        const result = JSON.stringify(analysisResults.result.keywords[0].sentiment.label)
+        const result = analysisResults.result.keywords[0].sentiment.label
 
         // return res.send(result);
-        return res.send(result + " url sentiment for "+req.query.url);
+        res.setHeader('Content-Type', 'application/json')
+        return res.send({ label: result, text: "url sentiment for "+req.query.url });
     })
     .catch(err => {
       console.log('error:', err);
@@ -125,10 +126,11 @@ app.get("/text/sentiment", (req,res) => {
       languaje: 'en'
     })
     .then(analysisResults => {
-        const result = JSON.stringify(analysisResults.result.keywords[0].sentiment.label)
+        const result = analysisResults.result.keywords[0].sentiment.label
 
         // return res.send(result);
-        return res.send(result + " text sentiment for "+req.query.text);
+        res.setHeader('Content-Type', 'application/json')
+        return res.send({ label: result, text: "text sentiment for "+req.query.text });
     })
     .catch(err => {
       console.log('error:', err);
